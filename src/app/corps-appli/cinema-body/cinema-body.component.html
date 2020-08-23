@@ -28,7 +28,7 @@
                                           <div class="col-md-6"><img width="200" height="250" src="{{cinemaService.recup+'/imageFilm/'+s.seances._embedded.seances[0].film.id}}" /></div>  
                                           <div class="col-md-6">
                                             <ul class="list-group">
-                                                <li class="list-group-item">Programmes des séances</li>
+                                                <li class="list-group-item"><strong>Programmes des séances</strong></li>
                                                 <li *ngFor="let p of s.seances._embedded.seances" class="list-group-item">{{p.horaire|date:'mediumTime'}} | {{p.dateSeance|date}}</li>
                                             </ul>
                                           </div>
