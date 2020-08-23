@@ -21,36 +21,34 @@ export class CinemaBodyComponent implements OnInit {
   ngOnInit() {
     this.cinemaService.getVilles().subscribe(data=>{
       this.villes = data;
-    }, error=>{
+    }, error => {
       console.error(error);
     });
   }
 
   onGetCinemas(v){
-    this.clicVille=v;
-    this.cinemaService.getCinemas(v).subscribe(data=>{
+    this.clicVille = v;
+    this.cinemaService.getCinemas(v).subscribe(data => {
       this.cinemas = data;
-    }, error=>{
+    }, error => {
       console.error(error);
     })
   }
 
   onGetSalles(c){
-    this.clicCinema=c;
-    this.cinemaService.getSalles(c).subscribe(data=>{
+    this.clicCinema = c;
+    this.cinemaService.getSalles(c).subscribe(data => {
       this.salles = data;
-    
       this.salles._embedded.salles.forEach(salle => {
-        this.cinemaService.getSeances(salle).subscribe(data=>{
+        this.cinemaService.getSeances(salle).subscribe( data => {
           salle.seances = data;
-        }, error=>{
+        }, error => {
           console.error(error);
-      }) 
-     })
-    }, error=>{
+      });
+     });
+    }, error => {
       console.error(error);
-    })
+    });
   }
-
 
 }

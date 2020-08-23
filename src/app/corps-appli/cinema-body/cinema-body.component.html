@@ -29,6 +29,7 @@
                                           <div class="col-md-6">
                                             <ul class="list-group">
                                                 <li class="list-group-item">Programmes des séances</li>
+                                                <li *ngFor="let p of s.seances._embedded.seances" class="list-group-item">{{p.horaire}}</li>
                                             </ul>
                                           </div>
                                         </div>
