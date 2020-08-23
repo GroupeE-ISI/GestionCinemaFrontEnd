@@ -29,7 +29,7 @@
                                           <div class="col-md-6">
                                             <ul class="list-group">
                                                 <li class="list-group-item">Programmes des séances</li>
-                                                <li *ngFor="let p of s.seances._embedded.seances" class="list-group-item">{{p.horaire}}</li>
+                                                <li *ngFor="let p of s.seances._embedded.seances" class="list-group-item">{{p.horaire|date:'mediumTime'}} | {{p.dateSeance|date}}</li>
                                             </ul>
                                           </div>
                                         </div>
