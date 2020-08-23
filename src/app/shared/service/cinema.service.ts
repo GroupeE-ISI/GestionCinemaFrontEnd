@@ -22,12 +22,12 @@ export class CinemaService {
       return this.http.get(c._links.salles.href);
 
     }
-    
+
     getSeances(salle:any){
      let url = salle._links.seances.href.replace("{?projection}","");
       return this.http.get(url+"?projection=p1");
 
-    } 
+    }
 
 
    }

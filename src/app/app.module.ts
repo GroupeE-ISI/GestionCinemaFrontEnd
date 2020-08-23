@@ -1,3 +1,6 @@
+import { MovieComponent } from './movie/movie.component';
+import { MovieService } from './shared/service/movie.service';
+import { CinemaService } from './shared/service/cinema.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -14,15 +17,18 @@ import { CinemaBodyComponent } from './corps-appli/cinema-body/cinema-body.compo
     AppComponent,
     CorpsAppliComponent,
     CinemaBodyComponent,
+    MovieComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, HttpClientModule
-    
-   
-  
+    AppRoutingModule,
+    HttpClientModule,
+    HttpClient
   ],
-  providers: [],
+  providers: [
+    CinemaService,
+    MovieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
