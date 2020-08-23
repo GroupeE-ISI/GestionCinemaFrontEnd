@@ -22,10 +22,19 @@
                            <div class="col-md-6"> 
                                 <div class="panel panel-default">
                                     <div class="panel-heading">{{s.nom}}</div>
-                                        <div class="panel-body" *ngIf="s.seances">
-                                     <img src="{{cinemaService.recup+'/imageFilm/'+s.seances._embedded.seances[0].film.id}}" /> 
+
+                                      <div class="panel-body" *ngIf="s.seances">
+                                        <div class="row">
+                                          <div class="col-md-6"><img width="200" height="250" src="{{cinemaService.recup+'/imageFilm/'+s.seances._embedded.seances[0].film.id}}" /></div>  
+                                          <div class="col-md-6">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">Programmes des séances</li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                          
+                                    </div>
                                          
-                                         </div>
                                  </div>
                             </div>
                         </div>
