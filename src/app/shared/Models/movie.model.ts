@@ -1,37 +1,37 @@
-import { Language } from './language.model';
-import { Category } from './category.model';
+import { Langage } from './langage.model';
+import { Categorie } from './categorie.model';
 import { Screening } from './screening.model';
-export class Movie {
+export interface Movie {
     id: number;
-    title: string;
+    titre: string;
     description: string;
-    duration: string;
-    releaseYear: string;
-    poster: string;
-    screening: Screening[];
-    category: Category;
-    language: Language;
+    duree: string;
+    anneeSortie: string;
+    photo: string;
+    // screening: Screening[];
+    categorie: Categorie;
+    langage: Langage;
 
-    constructor(
+    // constructor(
 
-        idParam: number,
-        titleParam: string,
-        descriptionParam: string,
-        durationParam: string,
-        releaseYearParam: string,
-        posterParam: string,
-        screeningParam: Screening[],
-        categoryParam: Category,
-        languageParam: Language,
-    ) {
-        this.id = idParam;
-        this.title = titleParam;
-        this.description = descriptionParam;
-        this.duration = durationParam;
-        this.releaseYear = releaseYearParam;
-        this.poster = posterParam;
-        this.screening = screeningParam;
-        this.category = categoryParam;
-        this.language = languageParam;
-    }
+    //     idParam: number,
+    //     titleParam: string,
+    //     descriptionParam: string,
+    //     durationParam: string,
+    //     releaseYearParam: string,
+    //     posterParam: string,
+    //     // screeningParam: Screening[],
+    //     categoryParam: Categorie,
+    //     languageParam: Langage,
+    // ) {
+    //     this.id = idParam;
+    //     this.titre = titleParam;
+    //     this.description = descriptionParam;
+    //     this.duree = durationParam;
+    //     this.anneeSortie = releaseYearParam;
+    //     this.photo = posterParam;
+    //     // this.screening = screeningParam;
+    //     this.categorie = categoryParam;
+    //     this.langage = languageParam;
+    // }
 }
