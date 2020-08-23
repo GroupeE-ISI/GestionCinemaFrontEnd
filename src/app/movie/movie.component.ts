@@ -14,12 +14,12 @@ export class MovieComponent implements OnInit {
 
   ngOnInit(): void {
     this.movieService.getMovies().subscribe(
-      (data) => this.movies = data,
-        // console.log('in');
-      // },
-      // (error) => {console.log(error);
-      // },
-      // () => console.log('Finished')
+      (data) => {this.movies = data,
+        console.log('in');
+      },
+      (error) => {console.log(error);
+      },
+      () => console.log('Finished')
       );
   }
 

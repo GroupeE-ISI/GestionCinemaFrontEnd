@@ -1,4 +1,31 @@
 <p>It work's</p>
-<div *ngFor="let movie of movies">
-    {{ movie.id }}{{ movie.titre }}     
-  </div>
+
+
+  <div align="left">
+    <table border="1" cellpadding="5">
+      <caption>
+        <h2>Liste des films dans la base de données</h2>
+      </caption>
+      <tr>
+        <th>Id</th>
+        <th>Titre du film</th>
+        <th>Déscription du film</th>
+        <th>Durée d film</th>
+        <th>Année de sortie du film</th>
+        <th>Catégorie du film</th>
+        <th>Langue originale du film</th>
+      </tr>
+      
+      <tr *ngFor="let movie of movies">
+        <td>{{ movie.id }}</td>
+        <td>{{ movie.title }}</td>
+        <td>{{ movie.description }}</td>
+        <td>{{ movie.duration }}</td>
+        <td>{{ movie.releaseyear }}</td>
+        <td>{{ movie.category.name }}</td>
+        <td>{{ movie.language.nom }}</td> 
+      </tr>
+
+      
+      </table>
+      </div>
