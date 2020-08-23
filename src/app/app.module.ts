@@ -22,8 +22,7 @@ import { CinemaBodyComponent } from './corps-appli/cinema-body/cinema-body.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    HttpClient
+    HttpClientModule
   ],
   providers: [
     CinemaService,
