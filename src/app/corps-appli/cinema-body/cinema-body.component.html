@@ -14,7 +14,7 @@
             <div class="panel-heading">Liste des Cinémas</div>
                 <div class="panel-body">
                     <ul *ngIf="cinemas" class="nav nav-pills">
-                      <li [ngClass]="c==clicCinema?'active': ''"*ngFor="let c of cinemas._embedded.cinemas">
+                      <li [ngClass]="c==clicCinema?'active': ''" *ngFor="let c of cinemas._embedded.cinemas">
                         <a (click)="onGetSalles(c)">{{c.nom}}</a></li>
                     </ul>
                     <div class="row" *ngIf="salles">
@@ -29,7 +29,7 @@
                                  </div>
                             </div>
                         </div>
-                   </div> 
+                   </div>
                </div>
         </div>
     </div>
@@ -38,16 +38,7 @@
 <!--
 <div class="container">
     
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">WebSiteName</a>
-        </div>
-        <ul *ngIf="villes" class="list-group">
-            <li [ngClass]="v==clicVille?'active':'' "  *ngFor="let v of villes._embedded.villes" class="list-group-item" (click)="onGetCinemas(v)">
-                {{v.nom}}
-            </li>
-        </ul>
-    </div>-->
+</div>-->
     
 
 <!--<footer class="footer">
