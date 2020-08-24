@@ -1,29 +1,28 @@
-<mat-card class="example-card">
-  <mat-card-header>
+<mat-card class="example-card" *ngFor="let movie of movies">
+  <!-- <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>Shiba Inu</mat-card-title>
     <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  </mat-card-header> -->
+  <img mat-card-image src="{{movie.poster}}" alt="{{movie.title}}">
   <mat-card-content>
     <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
+      {{movie.title}},  {{movie.category.name}},  {{movie.language.nom}}
+    </p>
+    <p>
+      {{movie.description}}
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+    <button mat-button>Réserver</button>
+    <!-- <button mat-button>SHARE</button> -->
   </mat-card-actions>
 </mat-card>
 
 
 
 
-
-
-<div class="container backgroundColor">
+<!-- <div class="container backgroundColor">
   <div class="row row-cols-1 row-cols-md-3" >
       <div class="col mb-4" *ngFor="let movie of movies">
         <div class="card h-100">
@@ -31,12 +30,14 @@
           <div class="card-body">
             <h5 class="card-title">{{ movie.title }}</h5>
             <p class="card-text">{{ movie.description }}</p>
-            <!-- <a [routerLink]="['/liste', movie.id]" class="btn btn-primary"> voir details</a> -->
+             <a [routerLink]="['/liste', movie.id]" class="btn btn-primary"> voir details</a>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+
+<!-- 
   
   <div>
     <table cellpadding="5">
@@ -65,4 +66,4 @@
 
       
       </table>
-      </div> -->
+      </div> --> 
