@@ -41,16 +41,16 @@ export class CinemaBodyComponent implements OnInit {
     })
   }
 
-  onGetSalles(c){
+  onGetSalles(c): void{
     this.clicCinema = c;
     this.cinemaService.getSalles(c).subscribe(data => {
       this.salles = data;
       this.salles._embedded.salles.forEach(salle => {
-        this.cinemaService.getSeances(salle).subscribe( data => {
-          salle.seances = data;
+        this.cinemaService.getSeances(salle).subscribe(dataSeance => {
+          salle.seances = dataSeance;
         }, error => {
           console.error(error);
-      })
+      });
      })
     }, error => {
       console.error(error);
