@@ -1,11 +1,6 @@
-<mat-grid-list cols="5">
-  <!-- <mat-grid-tile> -->
-    <mat-card class="example-card" *ngFor="let movie of movies">
-      <!-- <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-      </mat-card-header> -->
+  <div class="container backgroundColor">
+    <div class="row row-cols-1 row-cols-md-3" >
+      <mat-card class="example-card" *ngFor="let movie of movies">
       <img mat-card-image src="{{movie.poster}}" alt="{{movie.title}}">
       <mat-card-content>
         <p>
@@ -16,61 +11,17 @@
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button>Réserver</button>
-        <!-- <button mat-button>SHARE</button> -->
+        <div class="example-button-container">
+          <button mat-raised-button color="primary" (click)="openDialog()">Détails</button>
+          <button mat-raised-button color="primary">Réserver</button>
+          <button mat-fab color="primary" aria-label="Example icon button with a bookmark icon">
+            <mat-icon>bookmark</mat-icon>
+          </button>
+            <button mat-fab color="primary"  aria-label="Example icon button with a heart icon">
+              <mat-icon>favorite</mat-icon>
+            </button>
+        </div>
       </mat-card-actions>
     </mat-card>
-  <!-- </mat-grid-tile> -->
-</mat-grid-list>
-
-
-
-
-
-
-
-<!-- <div class="container backgroundColor">
-  <div class="row row-cols-1 row-cols-md-3" >
-      <div class="col mb-4" *ngFor="let movie of movies">
-        <div class="card h-100">
-          <img src="{{ movie.poster }}" class="card-img-top h-15" alt="{{ movie.title }}">
-          <div class="card-body">
-            <h5 class="card-title">{{ movie.title }}</h5>
-            <p class="card-text">{{ movie.description }}</p>
-             <a [routerLink]="['/liste', movie.id]" class="btn btn-primary"> voir details</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-<!-- 
-  
-  <div>
-    <table cellpadding="5">
-      <caption>
-        <h2>Liste des films dans la base de données</h2>
-      </caption>
-      <tr>
-        <th>Id</th>
-        <th>Titre du film</th>
-        <th>Déscription du film</th>
-        <th>Durée d film</th>
-        <th>Année de sortie du film</th>
-        <th>Catégorie du film</th>
-        <th>Langue originale du film</th>
-      </tr>
-      
-      <tr *ngFor="let movie of movies">
-        <td>{{ movie.id }}</td>
-        <td>{{ movie.title }}</td>
-        <td>{{ movie.description }}</td>
-        <td>{{ movie.duration }}</td>
-        <td>{{ movie.releaseyear }}</td>
-        <td>{{ movie.category.name }}</td>
-        <td>{{ movie.language.nom }}</td> 
-      </tr>
-
-      
-      </table>
-      </div> --> 
+  </div>
+</div>

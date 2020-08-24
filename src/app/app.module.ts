@@ -13,6 +13,9 @@ import { CinemaBodyComponent } from './corps-appli/cinema-body/cinema-body.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    MatBadgeModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [
     CinemaService,

@@ -12,6 +12,8 @@ export class MovieComponent implements OnInit {
   public movies: Movie[];
   constructor(private movieService: MovieService) { }
 
+  openDialog(){}
+
   ngOnInit(): void {
     this.movieService.getMovies().subscribe(
       (data) => {this.movies = data,
