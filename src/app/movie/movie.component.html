@@ -1,6 +1,18 @@
-<p>It work's</p>
-
-
+<div class="container backgroundColor">
+  <div class="row row-cols-1 row-cols-md-3" >
+      <div class="col mb-4" *ngFor="let movie of movies">
+        <div class="card h-100">
+          <img src="{{ movie.poster }}" class="card-img-top h-15" alt="{{ movie.title }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ movie.title }}</h5>
+            <p class="card-text">{{ movie.description }}</p>
+            <!-- <a [routerLink]="['/liste', movie.id]" class="btn btn-primary"> voir details</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <div align="left">
     <table border="1" cellpadding="5">
       <caption>
@@ -28,4 +40,4 @@
 
       
       </table>
-      </div>
+      </div> -->
