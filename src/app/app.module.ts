@@ -12,6 +12,7 @@ import { CorpsAppliComponent } from './corps-appli/corps-appli.component';
 import { CinemaBodyComponent } from './corps-appli/cinema-body/cinema-body.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MatCardModule} from '@angular/material/card';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ],
   providers: [
     CinemaService,
