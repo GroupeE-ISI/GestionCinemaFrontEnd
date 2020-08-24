@@ -14,9 +14,11 @@ export class CinemaBodyComponent implements OnInit {
   public villes;
   public cinemas;
   public salles:any;
+  public places;
 
   public clicVille;
   public clicCinema;
+  public clicSeance:any;
 
   constructor(public cinemaService:CinemaService) { }
 
@@ -30,6 +32,8 @@ export class CinemaBodyComponent implements OnInit {
 
   onGetCinemas(v){
     this.clicVille = v;
+    //this.clicCinema = undefined;
+    this.salles = undefined ;
     this.cinemaService.getCinemas(v).subscribe(data => {
       this.cinemas = data;
     }, error => {
@@ -46,11 +50,20 @@ export class CinemaBodyComponent implements OnInit {
           salle.seances = data;
         }, error => {
           console.error(error);
-      });
-     });
+      })
+     })
     }, error => {
       console.error(error);
-    });
+    })
+  }
+
+  onGetReservationsPlaces(p){
+    this.clicSeance = p;
+    this.cinemaService.getReservationsPlaces(p)
+      .subscribe(data => {
+        this.clicSeance.reservations = data;
+      } , error => { console.log(error);
+      })
   }
 
 }

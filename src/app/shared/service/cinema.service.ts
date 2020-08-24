@@ -27,6 +27,11 @@ export class CinemaService {
       return this.http.get(url+"?projection=p1");
 
     }
+    getReservationsPlaces(p){
+
+      let url = p._links.reservations.href.replace("{?projection}","");
+      return this.http.get(url+"?projection=p2");
+    }
 
    }
 
