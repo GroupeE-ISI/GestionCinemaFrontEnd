@@ -1,8 +1,45 @@
-<p>It work's</p>
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Shiba Inu</mat-card-title>
+    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+      bred for hunting.
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>
 
 
-  <div align="left">
-    <table border="1" cellpadding="5">
+
+
+
+
+<div class="container backgroundColor">
+  <div class="row row-cols-1 row-cols-md-3" >
+      <div class="col mb-4" *ngFor="let movie of movies">
+        <div class="card h-100">
+          <img src="{{ movie.poster }}" class="card-img-top h-15" alt="{{ movie.title }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ movie.title }}</h5>
+            <p class="card-text">{{ movie.description }}</p>
+            <!-- <a [routerLink]="['/liste', movie.id]" class="btn btn-primary"> voir details</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div>
+    <table cellpadding="5">
       <caption>
         <h2>Liste des films dans la base de données</h2>
       </caption>
@@ -28,4 +65,4 @@
 
       
       </table>
-      </div>
+      </div> -->

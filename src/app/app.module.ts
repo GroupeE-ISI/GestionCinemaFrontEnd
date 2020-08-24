@@ -10,7 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CorpsAppliComponent } from './corps-appli/corps-appli.component';
 import { CinemaBodyComponent } from './corps-appli/cinema-body/cinema-body.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { CinemaBodyComponent } from './corps-appli/cinema-body/cinema-body.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatCardModule
   ],
   providers: [
     CinemaService,
