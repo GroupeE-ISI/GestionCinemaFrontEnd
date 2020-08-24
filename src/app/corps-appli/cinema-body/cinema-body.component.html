@@ -14,7 +14,7 @@
             <div class="panel-heading">Liste des Cinémas</div>
                 <div class="panel-body">
                     <ul *ngIf="cinemas" class="nav nav-pills">
-                      <li [ngClass]="c==clicCinema?'active': ''"*ngFor="let c of cinemas._embedded.cinemas">
+                      <li [ngClass]="c==clicCinema?'active': ''" *ngFor="let c of cinemas._embedded.cinemas">
                         <a (click)="onGetSalles(c)">{{c.nom}}</a></li>
                     </ul>
                     <div class="row" *ngIf="salles">
@@ -22,14 +22,31 @@
                            <div class="col-md-6"> 
                                 <div class="panel panel-default">
                                     <div class="panel-heading">{{s.nom}}</div>
-                                        <div class="panel-body" *ngIf="s.seances">
-                                     <img src="{{cinemaService.recup+'/imageFilm/'+s.seances._embedded.seances[0].film.id}}" /> 
+
+                                      <div class="panel-body" *ngIf="s.seances">
+                                        <div class="row">
+                                          <div class="col-md-6"><img width="200" height="230" src="{{cinemaService.recup+'/imageFilm/'+s.seances._embedded.seances[0].film.id}}" /></div>  
+                                          <div class="col-md-6">
+                                            <ul class="list-group">
+                                                <li class="list-group-item"><strong>Programmes des séances</strong></li>
+                                                <li [ngClass]="p==clicSeance?'active': ''"(click)="onGetReservationsPlaces(p)" *ngFor="let p of s.seances._embedded.seances" class="list-group-item">{{p.horaire|date:'mediumTime'}} | {{p.dateSeance|date}}</li>
+                                            </ul>
+                                          </div>
+                                        </div>
+
+
+                                        <div *ngIf="clicSeance">
+                                            <div class="row" *ngIf="clicSeance.reservations">
+                                            <button *ngFor="let r of clicSeance.reservations._embedded.reservations">{{r.place.numero}}</button>
+                                            </div>  
+                                       </div>
+                                        
+                                    </div>
                                          
-                                         </div>
                                  </div>
                             </div>
                         </div>
-                   </div> 
+                   </div>
                </div>
         </div>
     </div>
@@ -38,16 +55,7 @@
 <!--
 <div class="container">
     
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">WebSiteName</a>
-        </div>
-        <ul *ngIf="villes" class="list-group">
-            <li [ngClass]="v==clicVille?'active':'' "  *ngFor="let v of villes._embedded.villes" class="list-group-item" (click)="onGetCinemas(v)">
-                {{v.nom}}
-            </li>
-        </ul>
-    </div>-->
+</div>-->
     
 
 <!--<footer class="footer">
