@@ -29,7 +29,7 @@
                                           <div class="col-md-6">
                                             <ul class="list-group">
                                                 <li class="list-group-item"><strong>Programmes des séances</strong></li>
-                                                <li [ngClass]="p==clicSeance?'active': ''"(click)="onGetReservationsPlaces(p)" *ngFor="let p of s.seances._embedded.seances" class="list-group-item">{{p.horaire|date:'mediumTime'}} | {{p.dateSeance|date}}</li>
+                                                <li [ngClass]="p==clicSeance?'active': ''"(click)="onGetReservationsPlaces(p)" *ngFor="let p of s.seances._embedded.seances" class="list-group-item">{{p.horaire|date:'mediumTime':'en-US'}} | {{p.dateSeance|date}}</li>
                                             </ul>
                                           </div>
                                         </div>
