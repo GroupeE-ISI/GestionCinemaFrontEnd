@@ -37,7 +37,7 @@
 
                                         <div *ngIf="clicSeance">
                                             <div class="row" *ngIf="clicSeance.reservations">
-                                            <button *ngFor="let r of clicSeance.reservations._embedded.reservations">{{r.place.numero}}</button>
+                                            <button class="btn btn-info ticket" *ngFor="let r of clicSeance.reservations._embedded.reservations">{{r.place.numero}}</button>
                                             </div>  
                                        </div>
                                         
