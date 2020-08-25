@@ -28,6 +28,7 @@ export class CinemaBodyComponent implements OnInit {
   ngOnInit(): void {
     this.cinemaService.getVilles().subscribe(data => {
       this.villes = data;
+      console.log(this.villes);
     }, error => {
       console.error(error);
     });
