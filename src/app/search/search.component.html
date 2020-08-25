@@ -1,9 +1,17 @@
-      <form class="form-inline my-2 my-lg-0">
-          
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchMovie" [ngModelOptions]="{standalone: true}" (ngModelChange)="handleSearchIntoMoviess()">
-        <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
-        <mat-icon>search</mat-icon>
-      </form>
+      <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12">
+                        <input type="text" class="form-control input-lg" placeholder="Search"  [(ngModel)]="searchMovie" [ngModelOptions]="{standalone: true}" (ngModelChange)="handleSearchIntoMoviess()"/>
+                        <button (click)="handleSearchIntoMoviess()">
+                            <mat-icon>search</mat-icon>
+                        </button>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
       <div class="container">
         <h1 class="section-title h1">Résultats de recherche "{{searchMovie}}"</h1>
