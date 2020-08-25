@@ -24,6 +24,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MovieDetailsComponent } from './movie/movie-details/movie-details.component';
 import { MenuComponent } from './menu/menu.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MenuComponent } from './menu/menu.component';
     CinemaBodyComponent,
     MovieComponent,
     MovieDetailsComponent,
-    MenuComponent
+    MenuComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
