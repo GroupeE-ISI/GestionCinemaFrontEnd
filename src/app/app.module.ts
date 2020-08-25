@@ -23,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MovieDetailsComponent } from './movie/movie-details/movie-details.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MovieDetailsComponent } from './movie/movie-details/movie-details.compo
     CorpsAppliComponent,
     CinemaBodyComponent,
     MovieComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
