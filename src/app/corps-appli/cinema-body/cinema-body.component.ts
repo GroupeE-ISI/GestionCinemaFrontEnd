@@ -1,3 +1,4 @@
+import { Town } from './../../shared/Models/town.model';
 import { CinemaService } from './../../shared/service/cinema.service';
 import { Component, OnInit, ɵisDefaultChangeDetectionStrategy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -10,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CinemaBodyComponent implements OnInit {
 
-  public villes;
+  public villes: Town[];
   public cinemas;
   public salles;
   public places;
