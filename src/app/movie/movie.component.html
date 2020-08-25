@@ -1,0 +1,27 @@
+  <div class="container backgroundColor">
+    <div class="row row-cols-1 row-cols-md-3" >
+      <mat-card class="example-card" *ngFor="let movie of movies">
+      <img mat-card-image src="{{movie.poster}}" alt="{{movie.title}}">
+      <mat-card-content>
+        <p>
+          {{movie.title}},  {{movie.category.name}},  {{movie.language.nom}}
+        </p>
+        <p>
+          {{movie.description}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="example-button-container">
+          <button mat-raised-button color="primary" (click)="openDialog()">Détails</button>
+          <button mat-raised-button color="primary">Réserver</button>
+          <button mat-fab color="primary" aria-label="Example icon button with a bookmark icon">
+            <mat-icon>bookmark</mat-icon>
+          </button>
+            <button mat-fab color="primary"  aria-label="Example icon button with a heart icon">
+              <mat-icon>favorite</mat-icon>
+            </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
