@@ -6,6 +6,7 @@ import { CinemaBodyComponent } from './corps-appli/cinema-body/cinema-body.compo
 
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'cinemas' },
   { path: 'movie', component: MovieComponent },
   { path: 'cinemas', component: CinemaBodyComponent }
 ];

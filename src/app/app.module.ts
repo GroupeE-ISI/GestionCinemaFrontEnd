@@ -3,13 +3,18 @@ import { MovieService } from './shared/service/movie.service';
 import { CinemaService } from './shared/service/cinema.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CorpsAppliComponent } from './corps-appli/corps-appli.component';
 import { CinemaBodyComponent } from './corps-appli/cinema-body/cinema-body.component';
+
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -28,6 +33,7 @@ import {MatButtonModule} from '@angular/material/button';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatCardModule,
     MatGridListModule,
