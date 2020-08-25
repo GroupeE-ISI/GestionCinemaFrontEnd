@@ -1,17 +1,20 @@
+import { Town } from './../Models/town.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CinemaService {
 
-    public recup:string="http://localhost:8080"
+    public recup = 'http://localhost:8080/ville/';
+    private towns: Town[];
 
-  constructor(public http: HttpClient) { }
+    constructor(public http: HttpClient) { }
 
-    public getVilles(){
-      return this.http.get(this.recup+"/villes");
+    public getVilles(): Observable<Town[]>{
+      return this.http.get<Town[]>(this.recup + 'lister');
     }
     
     getCinemas(ville){

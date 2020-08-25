@@ -2,8 +2,7 @@
     <nav class="navbar">
         <div class="container">
             <ul *ngIf="villes" class="nav navbar-nav">
-             <li [ngClass]="ville==clicVille?'active':'' "*ngFor="let ville of villes._embedded.villes" class="list-group-item clickable" (click)="onGetCinemas(ville)">{{ville.nom}}</li>
-
+             <li [ngClass]="ville==clicVille?'active':'' "*ngFor="let ville of villes" class="list-group-item clickable" (click)="onGetCinemas(ville)">{{ville.name}}</li>
             </ul>
         </div>
     </nav>

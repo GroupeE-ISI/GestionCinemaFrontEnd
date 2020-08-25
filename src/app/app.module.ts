@@ -16,18 +16,21 @@ import { CinemaBodyComponent } from './corps-appli/cinema-body/cinema-body.compo
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatCardModule} from '@angular/material/card';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatBadgeModule} from '@angular/material/badge';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MovieDetailsComponent } from './movie/movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CorpsAppliComponent,
     CinemaBodyComponent,
-    MovieComponent
+    MovieComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatGridListModule,
     MatBadgeModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [
     CinemaService,
