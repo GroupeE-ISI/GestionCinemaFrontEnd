@@ -1,3 +1,4 @@
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MovieService } from './../shared/service/movie.service';
 import { Movie } from './../shared/Models/movie.model';
 import { Component, OnInit } from '@angular/core';
@@ -11,11 +12,10 @@ import {MatDialog} from '@angular/material/dialog';
 export class MovieComponent implements OnInit {
 
   public movies: Movie[];
-  constructor(private movieService: MovieService) { }
-  // , public dialog: MatDialog
+  constructor(private movieService: MovieService, public dialog: MatDialog) { }
 
   openDialog(): void {
-    // const dialogRef = this.dialog.open(MovieComponent);
+    const dialogRef = this.dialog.open(MovieDetailsComponent);
   }
 
   ngOnInit(): void {
