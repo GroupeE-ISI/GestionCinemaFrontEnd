@@ -13,24 +13,27 @@ export class CinemaService {
     public getVilles(){
       return this.http.get(this.recup+"/villes");
     }
-
-    getCinemas(v){
-      return this.http.get(v._links.cinemas.href);
-    }
-    getSalles(c){
-      return this.http.get(c._links.salles.href);
-
-    }
     
+    getCinemas(ville){
+      return this.http.get(ville._links.cinemas.href);
+    }
+    getSalles(cinema){
+      return this.http.get(cinema._links.salles.href);
+
+    }
+
     getSeances(salle:any){
      let url = salle._links.seances.href.replace("{?projection}","");
       return this.http.get(url+"?projection=p1");
 
     }
-    getReservationsPlaces(p){
+    getReservationsPlaces(seance){
 
-      let url = p._links.reservations.href.replace("{?projection}","");
+      let url = seance._links.reservations.href.replace("{?projection}","");
       return this.http.get(url+"?projection=p2");
+    }
+    payerReservations(dform){
+      return this.http.post(this.recup+"/payerReservations", dform);
     }
 
    }

@@ -2,7 +2,7 @@
     <nav class="navbar">
         <div class="container">
             <ul *ngIf="villes" class="nav navbar-nav">
-             <li [ngClass]="v==clicVille?'active':'' "*ngFor="let v of villes._embedded.villes" class="list-group-item" (click)="onGetCinemas(v)">{{v.nom}}</li>
+             <li [ngClass]="ville==clicVille?'active':'' "*ngFor="let ville of villes._embedded.villes" class="list-group-item clickable" (click)="onGetCinemas(ville)">{{ville.nom}}</li>
 
             </ul>
         </div>
@@ -13,34 +13,55 @@
         <div class="panel panel-default">
             <div class="panel-heading">Liste des Cinémas</div>
                 <div class="panel-body">
-                    <ul *ngIf="cinemas" class="nav nav-pills">
-                      <li [ngClass]="c==clicCinema?'active': ''" *ngFor="let c of cinemas._embedded.cinemas">
-                        <a (click)="onGetSalles(c)">{{c.nom}}</a></li>
+                    <ul *ngIf="cinemas" class="nav nav-pills clickable">
+                      <li [ngClass]="cinema==clicCinema?'active': ''" *ngFor="let cinema of cinemas._embedded.cinemas">
+                        <a (click)="onGetSalles(cinema)">{{cinema.nom}}</a></li>
                     </ul>
                     <div class="row" *ngIf="salles">
-                        <div *ngFor="let s of salles._embedded.salles">
+                        <div *ngFor="let salle of salles._embedded.salles">
                            <div class="col-md-6"> 
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">{{s.nom}}</div>
+                                    <div class="panel-heading">{{salle.nom}}</div>
 
-                                      <div class="panel-body" *ngIf="s.seances">
+                                      <div class="panel-body" *ngIf="salle.seances">
                                         <div class="row">
-                                          <div class="col-md-6"><img width="200" height="230" src="{{cinemaService.recup+'/imageFilm/'+s.seances._embedded.seances[0].film.id}}" /></div>  
+                                          <div class="col-md-6"><img width="200" height="230" src="{{cinemaService.recup+'/imageFilm/'+salle.seances._embedded.seances[0].film.id}}" /></div>  
                                           <div class="col-md-6">
                                             <ul class="list-group">
                                                 <li class="list-group-item"><strong>Programmes des séances</strong></li>
-                                                <li [ngClass]="p==clicSeance?'active': ''"(click)="onGetReservationsPlaces(p)" *ngFor="let p of s.seances._embedded.seances" class="list-group-item">{{p.horaire|date:'mediumTime':'en-US'}} | {{p.dateSeance|date}}</li>
+                                                <li [ngClass]="seance==clicSeance?'active': ''"(click)="onGetReservationsPlaces(seance)" *ngFor="let seance of salle.seances._embedded.seances" class="list-group-item clickable">{{seance.horaire|date:'mediumTime':'en-US'}} | {{seance.dateSeance|date}}</li>
                                             </ul>
                                           </div>
                                         </div>
 
-
                                         <div *ngIf="clicSeance">
-                                            <div class="row" *ngIf="clicSeance.reservations">
-                                            <button class="btn btn-success ticket" *ngFor="let r of clicSeance.reservations._embedded.reservations">{{r.place.numero}}</button>
-                                            </div>  
+                                            <div *ngIf="salle.id==clicSeance.salle.id">
+                                              <div class="row" *ngIf="clicSeance?.reservations">
+                                                <button class="{{onGetPlaceButton(reservatio)}}" (click)="onSelectedPlace(reservatio)" 
+                                                    [disabled]="reservatio.placeReservee==true"  
+                                                    *ngFor="let reservatio of clicSeance?.reservations?._embedded?.reservations"
+                                                >
+                                                    {{reservatio.place.numero}}
+                                                </button>
+                                              </div> 
+
+                                                <div>
+                                                    <form #f='ngForm' (ngSubmit)="onReserverPlaces(f.value)">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Client</label>
+                                                            <input class=" form-control" type="text" name="nonClient" ngModel>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label">Code Achat</label>
+                                                            <input class="form-control" type="text"  name="codeAchat" ngModel>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-info">Reserver</button>
+                                                    </form>
+                                                </div>
+
+                                            </div>
                                        </div>
-                                        
+                                    
                                     </div>
                                          
                                  </div>

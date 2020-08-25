@@ -1,5 +1,5 @@
 import { CinemaService } from './../../shared/service/cinema.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵisDefaultChangeDetectionStrategy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -14,10 +14,13 @@ export class CinemaBodyComponent implements OnInit {
   public cinemas;
   public salles;
   public places;
+  public chaine: string;
+
 
   public clicVille;
   public clicCinema;
   public clicSeance;
+  public selectedPlaces;
 
   constructor(public cinemaService: CinemaService) { }
 
@@ -29,21 +32,21 @@ export class CinemaBodyComponent implements OnInit {
     });
   }
 
-  onGetCinemas(v): void {
-    this.clicVille = v;
+  onGetCinemas(ville): void {
+    this.clicVille = ville;
     //this.clicCinema = undefined;
     this.salles = undefined ;
-    this.cinemaService.getCinemas(v).subscribe(dataCinema => {
+    this.cinemaService.getCinemas(ville).subscribe(dataCinema => {
       this.cinemas = dataCinema;
     }, error => {
       console.error(error);
     });
   }
 
-  onGetSalles(c): void{
-    this.clicCinema = c;
+  onGetSalles(cinema): void{
+    this.clicCinema = cinema;
     //this.places = undefined ;
-    this.cinemaService.getSalles(c).subscribe(data => {
+    this.cinemaService.getSalles(cinema).subscribe(data => {
       this.salles = data;
       this.salles._embedded.salles.forEach(salle => {
         this.cinemaService.getSeances(salle).subscribe( dataSeance => {
@@ -57,13 +60,56 @@ export class CinemaBodyComponent implements OnInit {
     });
   }
 
-  onGetReservationsPlaces(p): void{
-    this.clicSeance = p;
+  onGetReservationsPlaces(seance): void{
+    this.clicSeance = seance;
     this.clicCinema = undefined ;
-    this.cinemaService.getReservationsPlaces(p)
+    this.cinemaService.getReservationsPlaces(seance)
       .subscribe(dataReservation => {
         this.clicSeance.reservations = dataReservation;
+        this.selectedPlaces = [];
       } , error => { console.log(error);
       });
   }
+
+  onSelectedPlace(reservatio): void{
+    if(!reservatio.selected){
+      reservatio.selected = true;
+      this.selectedPlaces.push(reservatio);
+    }
+    else {
+      reservatio.selected = false;
+      this.selectedPlaces.splice(this.selectedPlaces.indexOf(reservatio), 1);
+    }
+    console.log(this.selectedPlaces);
+  }
+
+  onGetPlaceButton(reservatio): string{
+    let chaine = 'btn ticket ';
+    if (reservatio.placeReservee === true){
+      chaine = 'chaine + btn-danger';
+    }
+    else if (reservatio.selected){
+      chaine = 'chaine + btn-warning';
+    }
+    else {
+      chaine = 'chaine + btn-success';
+    }
+    return chaine;
+
+  }
+
+  onReserverPlaces(dform): void{
+    let reservations = [];
+    this.selectedPlaces.forEach(reservatio => {
+      reservations.push(reservatio.id);
+    });
+    dform.reservations = reservations;
+    this.cinemaService.payerReservations(dform).subscribe(dataReservation => {
+      alert("Réservation ok !")
+    }, error => {
+      console.log(error);
+    })
+  }
+
+
 }
