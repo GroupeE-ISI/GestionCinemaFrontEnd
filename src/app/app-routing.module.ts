@@ -1,14 +1,9 @@
-import { MovieComponent } from './movie/movie.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CinemaBodyComponent } from './corps-appli/cinema-body/cinema-body.component';
 
 
 
-const routes: Routes = [
-  { path: 'movie', component: MovieComponent },
-  { path: 'cinemas', component: CinemaBodyComponent }
-];
+const routes: Routes = [];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
