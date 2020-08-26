@@ -1,64 +1,70 @@
 <div class="container">
-    <p>
-        <mat-form-field appearance="standard" color="accent">
-            <mat-label>Titre du film</mat-label>
-            <input matInput placeholder="Placeholder">
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="fill" color="accent">
-            <mat-label>Description du film</mat-label>
-            <input matInput #input maxlength="600" placeholder="Ex. Ce film raconte l'histoire de ...">
-            <textarea matInput></textarea>
-            <mat-hint align="end">{{input.value?.length || 0}}/600</mat-hint>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="standard" color="accent">
-            <mat-label>Durée du film</mat-label>
-            <input matInput placeholder="Placeholder">
-            <mat-hint>Au format 00:00:00</mat-hint>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field color="accent" appearance="fill">
-            <mat-label>Année de sortie</mat-label>
-            <input matInput [matDatepicker]="picker2">
-            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2 color="primary"></mat-datepicker>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="standard" color="accent">
-            <mat-label>Affiche du film</mat-label>
-            <input matInput placeholder="Placeholder">
-            <mat-hint>Un lien sera bien apprécié</mat-hint>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="fill" color="accent">
-            <mat-label>Catégorie du film</mat-label>
-            <mat-select>
-                <mat-option>Choisissez...</mat-option>
-                <mat-option value="option" *ngFor="let category of categories">{{ category.name }}</mat-option>
-            </mat-select>
-            <mat-hint align="end">Choisir à partir de la liste</mat-hint>
-        </mat-form-field>
-    </p>
+    <form [formGroup]="movieService.form" (ngSubmit)="OnClickAddMovie()" method="post">
+        <input type="hidden" formControlName="$id">
+        <p>
+            <mat-form-field appearance="standard" color="accent">
+                <mat-label for="title">Titre du film</mat-label>
+                <input formControlName="title" matInput type="text" name="title" id="title">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill" color="accent">
+                <mat-label for="description">Description du film</mat-label>
+                <input formControlName="description" matInput #input maxlength="600" placeholder="Ex. Ce film raconte l'histoire de ...">
+                <textarea matInput></textarea>
+                <mat-hint align="end">{{input.value?.length || 0}}/600</mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="standard" color="accent">
+                <mat-label>Durée du film</mat-label>
+                <input formControlName="duration" matInput placeholder="Placeholder">
+                <mat-hint>Au format 00:00:00</mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field color="accent" appearance="standard">
+                <mat-label>Année de sortie</mat-label>
+                <input formControlName="releaseyear" matInput [matDatepicker]="picker2">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2 color="primary"></mat-datepicker>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="standard" color="accent">
+                <mat-label>Affiche du film</mat-label>
+                <input formControlName="poster" matInput placeholder="Placeholder">
+                <mat-hint>Un lien sera bien apprécié</mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="standard" color="accent">
+                <mat-label>Catégorie du film</mat-label>
+                <mat-select formControlName="category">
+                    <mat-option>Choisissez...</mat-option>
+                    <mat-option value="option" *ngFor="let category of categories">{{ category.name }}</mat-option>
+                </mat-select>
+                <mat-hint align="end">Choisir à partir de la liste</mat-hint>
+            </mat-form-field>
+        </p>
 
-    <p>
-        <mat-form-field appearance="fill" color="accent">
-            <mat-label>Langue du film</mat-label>
-            <mat-select>
-                <mat-option>Choisissez...</mat-option>
-                <mat-option value="option" *ngFor="let language of languages">{{ language.name }}</mat-option>
-            </mat-select>
-            <mat-hint align="end">Choisir à partir de la liste</mat-hint>
-        </mat-form-field>
-    </p>
-    <div class="example-button-row">
-        <button mat-raised-button color="accent">Enregitrer le film</button>
-    </div>
+        <p>
+            <mat-form-field appearance="standard" color="accent">
+                <mat-label>Langue du film</mat-label>
+                <mat-select formControlName="language">
+                    <mat-option>Choisissez...</mat-option>
+                    <mat-option value="option" *ngFor="let language of languages">{{ language.name }}</mat-option>
+                </mat-select>
+                <mat-hint align="end">Choisir à partir de la liste</mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <input type="submit" Valeur="Enregistrer le film">
+        </p>
+        <div class="example-button-row">
+            <button mat-raised-button color="primary">Enregitrer le film</button>
+        </div>
+    </form>
     <!-- <form>
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -165,4 +171,4 @@
             </div>
         </div>
     </form> -->
-</div>
+<!-- </div> -->

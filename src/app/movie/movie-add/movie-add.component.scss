@@ -4,7 +4,21 @@ mat-form-field.mat-form-field {
 
 .container{
     background-color: #5c6bc0;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    overflow: auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
 }
+
+.mat-raised-button{
+    background-color: white;
+    color: #5c6bc0;
+    margin-bottom: 30px;
+}
+
 
 .mat-form-field {
     display: inline;

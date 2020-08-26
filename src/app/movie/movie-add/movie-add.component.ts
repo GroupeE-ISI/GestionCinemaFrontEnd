@@ -1,3 +1,4 @@
+import { MovieService } from './../../shared/service/movie.service';
 import { Movie } from './../../shared/Models/movie.model';
 import { LanguageService } from './../../shared/service/language.service';
 import { CaregoryService } from './../../shared/service/caregory.service';
@@ -18,8 +19,13 @@ export class MovieAddComponent implements OnInit {
 
   constructor(
     private caregoryService: CaregoryService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    public movieService: MovieService
   ) { }
+
+  OnClickAddMovie(): void{
+    console.log('in');
+  }
 
   ngOnInit(): void {
     this.caregoryService.getCategories().subscribe(
