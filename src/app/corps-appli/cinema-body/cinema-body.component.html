@@ -2,33 +2,33 @@
     <nav class="navbar">
         <div class="container">
             <ul *ngIf="villes" class="nav navbar-nav">
-             <li [ngClass]="ville==clicVille?'active':'' "*ngFor="let ville of villes" class="list-group-item clickable" (click)="onGetCinemas(ville)">{{ville.name}}</li>
+             <li (click)="onGetCinemas(ville)" *ngFor="let ville of villes" class="list-group-item clickable">{{ville.nom}}</li>
             </ul>
         </div>
-    </nav>
-    
+    </nav>    
    
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">Liste des Cinémas</div>
                 <div class="panel-body">
                     <ul *ngIf="cinemas" class="nav nav-pills clickable">
-                      <li [ngClass]="cinema==clicCinema?'active': ''" *ngFor="let cinema of cinemas._embedded.cinemas">
+                      <li [ngClass]="cinema==clicCinema?'active': ''" *ngFor="let cinema of cinemasSearch">
                         <a (click)="onGetSalles(cinema)">{{cinema.nom}}</a></li>
                     </ul>
                     <div class="row" *ngIf="salles">
-                        <div *ngFor="let salle of salles._embedded.salles">
+                        <div *ngFor="let salle of salleSearch">
                            <div class="col-md-6"> 
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">{{salle.nom}}</div>
+                                    <a (click)="onGetSeances(salle)">{{salle.nom}}</a>
 
-                                      <div class="panel-body" *ngIf="salle.seances">
+                                      <div class="panel-body" *ngIf="seancesSearchByFilmID">
+                                          <div *ngFor="let seance of seancesSearch">
                                         <div class="row">
-                                          <div class="col-md-6"><img width="200" height="230" src="{{cinemaService.recup+'/imageFilm/'+salle.seances._embedded.seances[0].film.id}}" /></div>  
+                                          <div class="col-md-6"><img width="200" height="230" src="{{seance.film.poster}}" /></div>  
                                           <div class="col-md-6">
                                             <ul class="list-group">
                                                 <li class="list-group-item"><strong>Programmes des séances</strong></li>
-                                                <li [ngClass]="seance==clicSeance?'active': ''"(click)="onGetReservationsPlaces(seance)" *ngFor="let seance of salle.seances._embedded.seances" class="list-group-item clickable">{{seance.horaire|date:'mediumTime':'en-US'}} | {{seance.dateSeance|date}}</li>
+                                                <li [ngClass]="seance==clicSeance?'active': ''"(click)="onGetReservationsPlaces(seance)" *ngFor="let seance of seancesCategoryFilm" class="list-group-item clickable">{{seance.horaire|date:'mediumTime':'en-US'}} | {{seance.dateSeance|date}}</li>
                                             </ul>
                                           </div>
                                         </div>
@@ -60,6 +60,7 @@
 
                                             </div>
                                        </div>
+                                    </div>
                                     
                                     </div>
                                          
