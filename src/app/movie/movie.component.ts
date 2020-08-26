@@ -12,7 +12,7 @@ import {MatDialog} from '@angular/material/dialog';
 export class MovieComponent implements OnInit {
 
   public movies: Movie[];
-  constructor(private movieService: MovieService, public dialog: MatDialog) { }
+  constructor(private movieService: MovieService, public dialog: MatDialog,) { }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(MovieDetailsComponent);
@@ -27,6 +27,6 @@ export class MovieComponent implements OnInit {
       },
       () => console.log('Finished')
       );
-  }
+    }
 
 }

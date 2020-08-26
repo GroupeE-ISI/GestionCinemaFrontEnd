@@ -1,3 +1,4 @@
+import { AccueilComponent } from './accueil/accueil.component';
 import { SearchComponent } from './search/search.component';
 import { MovieComponent } from './movie/movie.component';
 import { NgModule, Component } from '@angular/core';
@@ -10,7 +11,8 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'cinemas' },
   { path: 'movie', component: MovieComponent },
   { path: 'cinemas', component: CinemaBodyComponent },
-  { path: 'search', component: SearchComponent }
+  { path: 'search', component: SearchComponent },
+  { path: 'accueil', component: AccueilComponent }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
