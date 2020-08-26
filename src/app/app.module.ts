@@ -26,6 +26,7 @@ import { MovieDetailsComponent } from './movie/movie-details/movie-details.compo
 import { MenuComponent } from './menu/menu.component';
 import { SearchComponent } from './search/search.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { MovieAddComponent } from './movie/movie-add/movie-add.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AccueilComponent } from './accueil/accueil.component';
     MovieDetailsComponent,
     MenuComponent,
     SearchComponent,
-    AccueilComponent
+    AccueilComponent,
+    MovieAddComponent
   ],
   imports: [
     BrowserModule,
