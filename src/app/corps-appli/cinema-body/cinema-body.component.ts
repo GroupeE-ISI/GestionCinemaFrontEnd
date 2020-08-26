@@ -1,3 +1,4 @@
+import { Movie } from './../../shared/Models/movie.model';
 import { Screening } from './../../shared/Models/screening.model';
 import { SeanceService } from './../../shared/service/seance.service';
 import { HallService } from './../../shared/service/hall.service';
@@ -46,7 +47,6 @@ export class CinemaBodyComponent implements OnInit {
   ngOnInit(): void {
     this.townService.getTowns().subscribe(data => {
       this.villes = data;
-      console.log(this.villes);
     }, error => {
       console.error(error);
     });
@@ -69,19 +69,22 @@ export class CinemaBodyComponent implements OnInit {
 
   onGetCinemas(ville: Town): void {
     this.cinemasSearch = this.cinemas.filter((cinema) => cinema.ville.id === ville.id);
+    this.salleSearch = [];
+    this.seancesSearch = [];
   }
 
   onGetSalles(cinema: Cinema): void{
     this.salleSearch = this.salles.filter((salle) => salle.cinema.id === cinema.id);
+    this.seancesSearch = [];
   }
 
   onGetSeances(salle: Screening): void{
     this.seancesSearch = this.seances.filter((seance) => seance.salle.id === salle.id);
   }
 
-  seancesCategoryFilm():void{
+  // seancesCategoryFilm():void{
 
-  }
+  // }
 
   onGetReservationsPlaces(seance): void{
     this.clicSeance = seance;

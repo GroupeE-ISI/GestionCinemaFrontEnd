@@ -1,92 +1,81 @@
+<!-- Affichage Des villes -->
+
 <div class="container">
-    <nav class="navbar">
+    <nav class="navbar-brand">
         <div class="container">
-            <ul *ngIf="villes" class="nav navbar-nav">
-             <li (click)="onGetCinemas(ville)" *ngFor="let ville of villes" class="list-group-item clickable">{{ville.nom}}</li>
+            <ul *ngIf="villes" class="navbar-brand">
+                <li (click)="onGetCinemas(ville)" *ngFor="let ville of villes" class="list-group-item clickable">
+                    {{ville.nom}}</li>
             </ul>
         </div>
-    </nav>    
-   
+    </nav>
+</div>
+
+<!-- Affichage des cinémas  -->
+<div *ngIf="cinemasSearch">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">Liste des Cinémas</div>
-                <div class="panel-body">
-                    <ul *ngIf="cinemas" class="nav nav-pills clickable">
-                      <li [ngClass]="cinema==clicCinema?'active': ''" *ngFor="let cinema of cinemasSearch">
+            <div class="panel-body">
+                <ul *ngIf="cinemas" class="nav nav-pills clickable">
+                    <li [ngClass]="cinema==clicCinema?'active': ''" *ngFor="let cinema of cinemasSearch">
                         <a (click)="onGetSalles(cinema)">{{cinema.nom}}</a></li>
-                    </ul>
-                    <div class="row" *ngIf="salles">
-                        <div *ngFor="let salle of salleSearch">
-                           <div class="col-md-6"> 
-                                <div class="panel panel-default">
-                                    <a (click)="onGetSeances(salle)">{{salle.nom}}</a>
-
-                                      <div class="panel-body" *ngIf="seancesSearchByFilmID">
-                                          <div *ngFor="let seance of seancesSearch">
-                                        <div class="row">
-                                          <div class="col-md-6"><img width="200" height="230" src="{{seance.film.poster}}" /></div>  
-                                          <div class="col-md-6">
-                                            <ul class="list-group">
-                                                <li class="list-group-item"><strong>Programmes des séances</strong></li>
-                                                <li [ngClass]="seance==clicSeance?'active': ''"(click)="onGetReservationsPlaces(seance)" *ngFor="let seance of seancesCategoryFilm" class="list-group-item clickable">{{seance.horaire|date:'mediumTime':'en-US'}} | {{seance.dateSeance|date}}</li>
-                                            </ul>
-                                          </div>
-                                        </div>
-
-                                        <div *ngIf="clicSeance">
-                                            <div *ngIf="salle.id==clicSeance.salle.id">
-                                              <div class="row" *ngIf="clicSeance?.reservations">
-                                                <button class="{{onGetPlaceButton(reservatio)}}" (click)="onSelectedPlace(reservatio)" 
-                                                    [disabled]="reservatio.placeReservee==true"  
-                                                    *ngFor="let reservatio of clicSeance?.reservations?._embedded?.reservations"
-                                                >
-                                                    {{reservatio.place.numero}}
-                                                </button>
-                                              </div> 
-
-                                                <div>
-                                                    <form #f='ngForm' (ngSubmit)="onReserverPlaces(f.value)">
-                                                        <div class="form-group">
-                                                            <label class="control-label">Client</label>
-                                                            <input class=" form-control" type="text" name="nonClient" ngModel>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label">Code Achat</label>
-                                                            <input class="form-control" type="text"  name="codeAchat" ngModel>
-                                                        </div>
-                                                        <button type="submit" class="btn btn-info">Reserver</button>
-                                                    </form>
-                                                </div>
-
-                                            </div>
-                                       </div>
-                                    </div>
-                                    
-                                    </div>
-                                         
-                                 </div>
-                            </div>
-                        </div>
-                   </div>
-               </div>
-        </div>
-    </div>
-
-</div>    
-<!--
-<div class="container">
-    
-</div>-->
-    
-
-<!--<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-               <h1>pied de page</h1> 
+                </ul>
             </div>
         </div>
     </div>
-</footer> -->
+</div>
 
+<!-- affichage des Salles -->
+<div class="row" *ngIf="salles">
+    <div *ngFor="let salle of salleSearch">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <a (click)="onGetSeances(salle)">{{salle.nom}}</a>
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- Affichage Séances -->
+<div class="panel-body" *ngIf="seancesSearch">
+    <div *ngFor="let seance of seancesSearch">
+        <div class="row">
+            <div class="col-md-6"><img width="200" height="230" src="{{seance.film.poster}}" /></div>
+            <div class="col-md-6">
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Programmes des séances</strong></li>
+                                <li [ngClass]="seance==clicSeance?'active': ''"(click)="onGetReservationsPlaces(seance)" *ngFor="let seance of seancesCategoryFilm" class="list-group-item clickable">{{seance.horaire|date:'mediumTime':'en-US'}} | {{seance.dateSeance|date}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- <div *ngIf="clicSeance">
+                            <div *ngIf="salle.id==clicSeance.salle.id">
+                              <div class="row" *ngIf="clicSeance?.reservations">
+                                <button class="{{onGetPlaceButton(reservatio)}}" (click)="onSelectedPlace(reservatio)" 
+                                    [disabled]="reservatio.placeReservee==true"  
+                                    *ngFor="let reservatio of clicSeance?.reservations?._embedded?.reservations"
+                                >
+                                    {{reservatio.place.numero}}
+                                </button>
+                              </div> 
+
+                                <div>
+                                    <form #f='ngForm' (ngSubmit)="onReserverPlaces(f.value)">
+                                        <div class="form-group">
+                                            <label class="control-label">Client</label>
+                                            <input class=" form-control" type="text" name="nonClient" ngModel>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Code Achat</label>
+                                            <input class="form-control" type="text"  name="codeAchat" ngModel>
+                                        </div>
+                                        <button type="submit" class="btn btn-info">Reserver</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                       </div> -->
