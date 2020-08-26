@@ -9,6 +9,16 @@
     display: flex;
 }
 
+.app-ul-block{
+    display: inline-block;
+    display: inline;
+}
+
+.list-group-item .app-ul-block{
+    list-style-type: none;
+}
+
+
 .navbar-brand ul li{
     background-color : grey;
     color: white;

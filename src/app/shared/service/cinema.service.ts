@@ -18,9 +18,6 @@ export class CinemaService {
       return this.http.get<Cinema[]>(this.recup + 'lister');
     }
 
-    // getCinemas(ville){
-    //   return this.http.get(ville._links.cinemas.href);
-    // }
     getSalles(cinema){
       return this.http.get(cinema._links.salles.href);
 

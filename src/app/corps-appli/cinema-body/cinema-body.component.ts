@@ -1,3 +1,5 @@
+import { PlaceService } from './../../shared/service/place.service';
+import { Place } from './../../shared/Models/place.model';
 import { Movie } from './../../shared/Models/movie.model';
 import { Screening } from './../../shared/Models/screening.model';
 import { SeanceService } from './../../shared/service/seance.service';
@@ -28,7 +30,9 @@ export class CinemaBodyComponent implements OnInit {
   public seances: Screening[];
   public seancesSearch: Screening[];
   public seancesSearchByFilmID: Screening[];
-  public places;
+  public places: Place[];
+  public placesSearch: Place[];
+  public placeChosen: Place;
   public chaine: string;
 
 
@@ -41,7 +45,8 @@ export class CinemaBodyComponent implements OnInit {
     public townService: TownService,
     public cinemaService: CinemaService,
     public hallService: HallService,
-    public seanceService: SeanceService
+    public seanceService: SeanceService,
+    public placeService: PlaceService
     ) { }
 
   ngOnInit(): void {
@@ -65,36 +70,33 @@ export class CinemaBodyComponent implements OnInit {
     }, error => {
       console.error(error);
     });
+    this.placeService.getPlaces().subscribe(dataPlaces => {
+      this.places = dataPlaces;
+    }, error => {
+      console.error(error);
+    });
   }
 
   onGetCinemas(ville: Town): void {
     this.cinemasSearch = this.cinemas.filter((cinema) => cinema.ville.id === ville.id);
     this.salleSearch = [];
     this.seancesSearch = [];
+    this.placesSearch = [];
   }
 
   onGetSalles(cinema: Cinema): void{
     this.salleSearch = this.salles.filter((salle) => salle.cinema.id === cinema.id);
     this.seancesSearch = [];
+    this.placesSearch = [];
   }
 
   onGetSeances(salle: Screening): void{
     this.seancesSearch = this.seances.filter((seance) => seance.salle.id === salle.id);
+    this.placesSearch = [];
   }
 
-  // seancesCategoryFilm():void{
-
-  // }
-
-  onGetReservationsPlaces(seance): void{
-    this.clicSeance = seance;
-    this.clicCinema = undefined ;
-    this.cinemaService.getReservationsPlaces(seance)
-      .subscribe(dataReservation => {
-        this.clicSeance.reservations = dataReservation;
-        this.selectedPlaces = [];
-      } , error => { console.log(error);
-      });
+  onGetReservationsPlaces(seance: Screening): void{
+    this.placesSearch = this.places.filter((place) => place.salle.id === seance.salle.id);
   }
 
   onSelectedPlace(reservatio): void{
@@ -109,19 +111,18 @@ export class CinemaBodyComponent implements OnInit {
     console.log(this.selectedPlaces);
   }
 
-  onGetPlaceButton(reservatio): string{
-    let chaine = 'btn ticket ';
-    if (reservatio.placeReservee === true){
-      chaine = 'chaine + btn-danger';
-    }
-    else if (reservatio.selected){
-      chaine = 'chaine + btn-warning';
-    }
-    else {
-      chaine = 'chaine + btn-success';
-    }
-    return chaine;
-
+  onGetPlaceButton(place: Place): string{
+     let chaine = 'btn ticket ';
+    // if (place.placeReservee === true){
+    //   chaine = 'chaine + btn-danger';
+    // }
+    // else if (place.selected){
+    //   chaine = 'chaine + btn-warning';
+    // }
+    // else {
+    //   chaine = 'chaine + btn-success';
+    // }
+     return chaine = 'chaine + btn-success';
   }
 
   onReserverPlaces(dform): void{
