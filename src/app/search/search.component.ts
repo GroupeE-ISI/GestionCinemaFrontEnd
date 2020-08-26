@@ -16,7 +16,11 @@ export class SearchComponent implements OnInit {
   constructor(private movieService: MovieService) { }
 
   handleSearchIntoMoviess(): void{
-    this.listMoviesSearch = this.listMoviesBase.filter((movie) => movie.title.toUpperCase().includes(this.searchMovie.toUpperCase()));
+    if (this.searchMovie) {
+      this.listMoviesSearch = this.listMoviesBase.filter((movie) => movie.title.toUpperCase().includes(this.searchMovie.toUpperCase()));
+    }else{
+      this.listMoviesSearch = this.listMoviesBase;
+    }
   }
 
   ngOnInit(): void {

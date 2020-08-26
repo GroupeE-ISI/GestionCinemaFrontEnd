@@ -1,4 +1,4 @@
-import { Town } from './../Models/town.model';
+import { Cinema } from './../Models/cinema.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -8,18 +8,16 @@ import { Observable } from 'rxjs';
 })
 export class CinemaService {
 
-    public recup = 'http://localhost:8080/ville/';
-    private towns: Town[];
+    public recup = 'http://localhost:8080/cinema/';
+
+    public cinemas: Cinema[];
 
     constructor(public http: HttpClient) { }
 
-    public getVilles(): Observable<Town[]>{
-      return this.http.get<Town[]>(this.recup + 'lister');
+    public getCinemas(): Observable<Cinema[]>{
+      return this.http.get<Cinema[]>(this.recup + 'lister');
     }
-    
-    getCinemas(ville){
-      return this.http.get(ville._links.cinemas.href);
-    }
+
     getSalles(cinema){
       return this.http.get(cinema._links.salles.href);
 

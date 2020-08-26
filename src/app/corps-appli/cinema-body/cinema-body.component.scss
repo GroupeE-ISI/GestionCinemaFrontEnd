@@ -5,7 +5,24 @@
     height: 60px;
     background-color:gray;
 }
+.navbar-brand{
+    display: flex;
+}
 
+.app-ul-block{
+    display: inline-block;
+    display: inline;
+}
+
+.list-group-item .app-ul-block{
+    list-style-type: none;
+}
+
+
+.navbar-brand ul li{
+    background-color : grey;
+    color: white;
+}
 .ticket{
     margin: 5px;
     width: 30px;
