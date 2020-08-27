@@ -1,0 +1,178 @@
+<div class="container">
+    <form [formGroup]="movieForm" (ngSubmit)="OnClickAddMovie()" method="post">
+        <input type="hidden" formControlName="$id">
+        <p>
+            <mat-form-field appearance="standard" color="accent">
+                <mat-label for="title">Titre du film</mat-label>
+                <input formControlName="title" matInput type="text" name="title" id="title">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill" color="accent">
+                <mat-label for="description">Description du film</mat-label>
+                <input formControlName="description" matInput #input maxlength="600" placeholder="Ex. Ce film raconte l'histoire de ...">
+                <textarea matInput></textarea>
+                <mat-hint align="end">{{input.value?.length || 0}}/600</mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="standard" color="accent">
+                <mat-label>Durée du film</mat-label>
+                <input formControlName="duration" matInput placeholder="Placeholder">
+                <mat-hint>Au format 00:00:00</mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field color="accent" appearance="standard">
+                <mat-label>Année de sortie</mat-label>
+                <input formControlName="releaseyear" matInput [matDatepicker]="picker2">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2 color="primary"></mat-datepicker>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="standard" color="accent">
+                <mat-label>Affiche du film</mat-label>
+                <input formControlName="poster" valur="poster" matInput placeholder="Placeholder">
+                <mat-hint>Un lien sera bien apprécié</mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="standard" color="accent">
+                <mat-label>Catégorie du film</mat-label>
+                <mat-select formControlName="idcategory">
+                    <mat-option>Choisissez...</mat-option>
+                    <mat-option value="{{ category.id }}" *ngFor="let category of categories">
+                    {{ category.name }}
+                    </mat-option>
+                </mat-select>
+                <mat-hint align="end">Choisir à partir de la liste</mat-hint>
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field appearance="standard" color="accent">
+                <mat-label>Langue du film</mat-label>
+                <mat-select formControlName="idlanguage">
+                    <mat-option>Choisissez...</mat-option>
+                    <mat-option value="{{ language.id }}" *ngFor="let language of languages">
+                     {{ language.name }}
+                    </mat-option>
+                </mat-select>
+                <mat-hint align="end">Choisir à partir de la liste</mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <input type="submit" Valeur="Enregistrer le film">
+        </p>
+        <div class="example-button-row">
+            <button mat-raised-button color="primary">Enregitrer le film</button>
+        </div>
+    </form>
+    <!-- <form>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Titre du film</label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Title">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Password</label>
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">Address</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress2">Address 2</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" id="inputCity">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState">State</label>
+                <select id="inputState" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputZip">Zip</label>
+                <input type="text" class="form-control" id="inputZip">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                    Check me out
+                </label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
+</div>
+
+<div class="container">
+    <form>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+            </div>
+        </div>
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"
+                            checked>
+                        <label class="form-check-label" for="gridRadios1">
+                            First radio
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                        <label class="form-check-label" for="gridRadios2">
+                            Second radio
+                        </label>
+                    </div>
+                    <div class="form-check disabled">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3"
+                            disabled>
+                        <label class="form-check-label" for="gridRadios3">
+                            Third disabled radio
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-group row">
+            <div class="col-sm-2">Checkbox</div>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
+                        Example checkbox
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </div>
+        </div>
+    </form> -->
+<!-- </div> -->

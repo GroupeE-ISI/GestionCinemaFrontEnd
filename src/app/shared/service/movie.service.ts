@@ -18,4 +18,7 @@ export class MovieService {
   public getMoviesByCategory(): Observable<Movie[]> {
     return this.httpClient.get<Movie[]>(this.baseURL + 'filtrer');
 }
+  public onAddMovie(movie: Movie): Observable<Movie[]> {
+  return this.httpClient.get<Movie[]>(this.baseURL + 'filtrer');
+}
 }

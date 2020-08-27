@@ -1,11 +1,15 @@
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MovieComponent } from './movie/movie.component';
 import { MovieService } from './shared/service/movie.service';
 import { CinemaService } from './shared/service/cinema.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatChipsModule } from '@angular/material/chips';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -13,7 +17,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CorpsAppliComponent } from './corps-appli/corps-appli.component';
 import { CinemaBodyComponent } from './corps-appli/cinema-body/cinema-body.component';
-
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
@@ -26,6 +29,8 @@ import { MovieDetailsComponent } from './movie/movie-details/movie-details.compo
 import { MenuComponent } from './menu/menu.component';
 import { SearchComponent } from './search/search.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { MovieAddComponent } from './movie/movie-add/movie-add.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,8 @@ import { AccueilComponent } from './accueil/accueil.component';
     MovieDetailsComponent,
     MenuComponent,
     SearchComponent,
-    AccueilComponent
+    AccueilComponent,
+    MovieAddComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +55,14 @@ import { AccueilComponent } from './accueil/accueil.component';
     MatBadgeModule,
     MatIconModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule
   ],
   providers: [
     CinemaService,
