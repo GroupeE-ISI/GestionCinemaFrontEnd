@@ -1,5 +1,5 @@
 <div class="container">
-    <form [formGroup]="movieService.form" (ngSubmit)="OnClickAddMovie()" method="post">
+    <form [formGroup]="movieForm" (ngSubmit)="OnClickAddMovie()" method="post">
         <input type="hidden" formControlName="$id">
         <p>
             <mat-form-field appearance="standard" color="accent">
@@ -33,16 +33,18 @@
         <p>
             <mat-form-field appearance="standard" color="accent">
                 <mat-label>Affiche du film</mat-label>
-                <input formControlName="poster" matInput placeholder="Placeholder">
+                <input formControlName="poster" valur="poster" matInput placeholder="Placeholder">
                 <mat-hint>Un lien sera bien apprécié</mat-hint>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field appearance="standard" color="accent">
                 <mat-label>Catégorie du film</mat-label>
-                <mat-select formControlName="category">
+                <mat-select formControlName="idcategory">
                     <mat-option>Choisissez...</mat-option>
-                    <mat-option value="option" *ngFor="let category of categories">{{ category.name }}</mat-option>
+                    <mat-option value="{{ category.id }}" *ngFor="let category of categories">
+                    {{ category.name }}
+                    </mat-option>
                 </mat-select>
                 <mat-hint align="end">Choisir à partir de la liste</mat-hint>
             </mat-form-field>
@@ -51,9 +53,11 @@
         <p>
             <mat-form-field appearance="standard" color="accent">
                 <mat-label>Langue du film</mat-label>
-                <mat-select formControlName="language">
+                <mat-select formControlName="idlanguage">
                     <mat-option>Choisissez...</mat-option>
-                    <mat-option value="option" *ngFor="let language of languages">{{ language.name }}</mat-option>
+                    <mat-option value="{{ language.id }}" *ngFor="let language of languages">
+                     {{ language.name }}
+                    </mat-option>
                 </mat-select>
                 <mat-hint align="end">Choisir à partir de la liste</mat-hint>
             </mat-form-field>

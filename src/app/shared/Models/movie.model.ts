@@ -2,7 +2,7 @@ import { Language } from './language.model';
 import { Category } from './category.model';
 import { Screening } from './screening.model';
 export interface Movie {
-    id: number;
+    id: undefined;
     title: string;
     description: string;
     duration: string;
