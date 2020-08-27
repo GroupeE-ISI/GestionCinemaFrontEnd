@@ -42,7 +42,7 @@
                 <mat-label>Catégorie du film</mat-label>
                 <mat-select formControlName="idcategory">
                     <mat-option>Choisissez...</mat-option>
-                    <mat-option value="{{ category.id }}" *ngFor="let category of categories">
+                    <mat-option [value]="category" *ngFor="let category of categories">
                     {{ category.name }}
                     </mat-option>
                 </mat-select>
@@ -55,15 +55,12 @@
                 <mat-label>Langue du film</mat-label>
                 <mat-select formControlName="idlanguage">
                     <mat-option>Choisissez...</mat-option>
-                    <mat-option value="{{ language.id }}" *ngFor="let language of languages">
+                    <mat-option [value]="language" *ngFor="let language of languages">
                      {{ language.name }}
                     </mat-option>
                 </mat-select>
                 <mat-hint align="end">Choisir à partir de la liste</mat-hint>
             </mat-form-field>
-        </p>
-        <p>
-            <input type="submit" Valeur="Enregistrer le film">
         </p>
         <div class="example-button-row">
             <button mat-raised-button color="primary">Enregitrer le film</button>

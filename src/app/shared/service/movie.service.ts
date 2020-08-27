@@ -1,3 +1,4 @@
+import { Film } from './../Models/film.model';
 import { Movie } from './../Models/movie.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -18,7 +19,9 @@ export class MovieService {
   public getMoviesByCategory(): Observable<Movie[]> {
     return this.httpClient.get<Movie[]>(this.baseURL + 'filtrer');
 }
-  public onAddMovie(movie: Movie): Observable<Movie[]> {
-  return this.httpClient.get<Movie[]>(this.baseURL + 'filtrer');
+  public onAddMovie(movie: Film): void {
+    console.log('http');
+    console.log(movie);
+    this.httpClient.post<Film>(this.baseURL + 'ajoutFilm', movie);
 }
 }

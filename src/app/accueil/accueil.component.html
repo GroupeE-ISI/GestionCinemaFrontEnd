@@ -9,4 +9,33 @@
     <button (click)="onClickGetMoviesByCategory(categoryChosen)" type="submit" class="btn btn-primary my-1">Submit</button>
     
 </form>
+<div class="container">
+  <!-- <h1 class="section-title h1">Films à l'affiche</h1> -->
+  <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let movie of listFilmCategory">
+          <div class="image-flip" >
+              <div class="mainflip flip-0">
+                  <div class="frontside">
+                      <div class="card">
+                          <div class="card-body text-center">
+                              <p><img class=" img-fluid" src="{{movie.poster}}" alt="{{movie.title}}"></p>
+                              <h4 class="card-title">{{movie.title}}</h4>
+                              <p class="card-text">{{movie.category.name}}</p>
+                           </div>
+                      </div>
+                  </div>
+                  <div class="backside">
+                      <div class="card">
+                          <div class="card-body text-center mt-4">
+                              <h4 class="card-title">{{movie.title}}</h4>
+                              <p class="card-text">{{movie.description}}</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
 

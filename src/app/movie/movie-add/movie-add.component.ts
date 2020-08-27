@@ -1,3 +1,4 @@
+import { Film } from './../../shared/Models/film.model';
 import { FormControl } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { MovieService } from './../../shared/service/movie.service';
@@ -8,6 +9,8 @@ import { Language } from './../../shared/Models/language.model';
 import { Category } from './../../shared/Models/category.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Categorie } from 'src/app/shared/Models/categorie.model';
+import { Langue } from 'src/app/shared/Models/langue.model';
 
 @Component({
   selector: 'app-movie-add',
@@ -20,6 +23,7 @@ export class MovieAddComponent implements OnInit {
   public languages: Language[];
   public movie: Movie;
   public movieForm: FormGroup;
+  public newArrayCate: Category[];
 
   constructor(
     private caregoryService: CaregoryService,
@@ -29,10 +33,7 @@ export class MovieAddComponent implements OnInit {
   ) { }
 
   OnClickAddMovie(): void{
-    // console.log('in');
-    // console.log(this.movieForm.value.category);
     const formValue = this.movieForm.value;
-    // console.log(formValue);
     const newMovie: Movie = {} as Movie;
     newMovie.id = formValue.$id,
     newMovie.title = formValue.title,
@@ -40,12 +41,24 @@ export class MovieAddComponent implements OnInit {
     newMovie.duration = formValue.duration,
     newMovie.releaseyear = formValue.releaseyear,
     newMovie.poster = formValue.poster,
-    newMovie.category = this.categories.filter((category) => category.id === formValue.idcategory)[0];
-    // newMovie.category.id = formValue.idcategory,
-    // newMovie.language.id = formValue.idlanguage,
-    newMovie.language = this.languages.filter((langue) => langue.id === formValue.idlanguage)[0];
-    this.movieService.onAddMovie(newMovie);
-    console.log(newMovie);
+    newMovie.category = formValue.idcategory;
+    newMovie.language = formValue.idlanguage;
+    console.log(formValue.idcategory.id);
+    console.log(formValue.idcategory.name);
+    // Test Classe Film
+    const newFilm: Film = new Film(
+      formValue.$id,
+      formValue.title,
+      formValue.description,
+      formValue.duration,
+      formValue.releaseyear,
+      formValue.poster,
+      new Categorie(formValue.idcategory.id, formValue.idcategory.name),
+      new Langue(formValue.idlanguage.id, formValue.idlanguage.name)
+    );
+
+
+    this.movieService.onAddMovie(newFilm);
   }
 
   ngOnInit(): void {
@@ -79,9 +92,7 @@ export class MovieAddComponent implements OnInit {
     releaseyear: new FormControl(''),
     poster: new FormControl(''),
     idcategory: new FormControl(''),
-    namecategory: new FormControl(''),
-    idlanguage: new FormControl(''),
-    namelanguage: new FormControl('')
+    idlanguage: new FormControl('')
     });
 }
 

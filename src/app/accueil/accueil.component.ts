@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class AccueilComponent implements OnInit {
 
   public categories: Category[];
+  public listFilms: Movie[];
   public listFilmCategory: Movie[];
   public categoryChosen: Category;
 
@@ -19,24 +20,34 @@ export class AccueilComponent implements OnInit {
   constructor(private movieService: MovieService, private categoryService: CaregoryService) { }
 
   onClickGetMoviesByCategory(category: Category): void{
-    this.movieService.getMoviesByCategory().subscribe(
-      (dataCategory) => {this.listFilmCategory = dataCategory,
-        console.log('bien');
-      },
-      (error) => {console.log(error);
-      },
-      () => console.log('Finished')
-      );
+    console.log(this.categoryChosen);
+    console.log(this.listFilms);
+    this.listFilmCategory = this.listFilms.filter((film) => film.category === this.categoryChosen);
+    // this.movieService.getMoviesByCategory().subscribe(
+    //   (dataCategory) => {this.listFilmCategory = dataCategory,
+    //     console.log('bien');
+    //   },
+    //   (error) => {console.log(error);
+    //   },
+    //   () => console.log('Finished')
+    //   );
   }
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe(
-      (dataCategories) => {this.categories = dataCategories,
-        console.log('in');
+      (dataCategories) => {this.categories = dataCategories;
       },
       (error) => {console.log(error);
       },
       () => console.log('Finished')
       );
-  }
+
+    this.movieService.getMovies().subscribe(
+        (dataMovies) => {this.listFilms = dataMovies;
+        },
+        (error) => {console.log(error);
+        },
+        () => console.log('Finished')
+        );
+        }
 
 }
